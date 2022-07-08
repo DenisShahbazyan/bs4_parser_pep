@@ -9,10 +9,12 @@ from constants import BASE_DIR, DATETIME_FORMAT
 
 def control_output(results, cli_args):
     output = cli_args.output
-    if output == 'pretty':
-        pretty_output(results)
-    elif output == 'file':
-        file_output(results, cli_args)
+    output_functions = {
+        'pretty': pretty_output,
+        'file': file_output,
+    }
+    if output in output_functions:
+        output_functions[output](results, cli_args)
     else:
         default_output(results)
 
@@ -22,7 +24,7 @@ def default_output(results):
         print(*row)
 
 
-def pretty_output(results):
+def pretty_output(results, *args):
     table = PrettyTable()
     table.field_names = results[0]
     table.align = 'l'

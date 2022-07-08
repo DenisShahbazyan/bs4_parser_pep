@@ -1,5 +1,6 @@
 import logging
 import re
+from collections import defaultdict
 from urllib.parse import urljoin
 
 import requests_cache
@@ -121,7 +122,7 @@ def pep(session):
     tr = tbody.find_all('tr')
 
     result = [('Статус', 'Количество')]
-    count_pep = {}
+    count_pep = defaultdict(int)
     for item in tqdm(tr):
         td = find_tag(item, 'td')
 
@@ -131,20 +132,15 @@ def pep(session):
 
         if status_page not in EXPECTED_STATUS[status_table]:
             logging.info(
-                '\n'
-                'Несовпадающие статусы:\n'
+                '\nНесовпадающие статусы:\n'
                 f'{link}\n'
                 f'Статус в карточке: {status_page}\n'
                 f'Ожидаемые статусы: {EXPECTED_STATUS[status_table]}'
             )
 
-        if status_page in count_pep.keys():
-            count_pep[status_page] += 1
-        else:
-            count_pep[status_page] = 1
+        count_pep[status_page] += 1
 
-    for key, value in count_pep.items():
-        result.append((key, value))
+    result.extend([(status, count_pep[status]) for status in count_pep])
     result.append(('Total', sum(count_pep.values())))
 
     return result
