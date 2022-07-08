@@ -9,16 +9,17 @@ def get_response(session, url):
     try:
         response = session.get(url)
         if response is None:
-            logging.error(
-                f'В ответе ничего не пришло {url}',
-                stack_info=True
-            )
-            raise ResponseNoneException('В ответе ничего не пришло')
+            raise ResponseNoneException
         response.encoding = 'utf-8'
         return response
     except RequestException:
         logging.exception(
             f'Возникла ошибка при загрузке страницы {url}',
+            stack_info=True
+        )
+    except ResponseNoneException:
+        logging.exception(
+            f'В ответе ничего не пришло {url}',
             stack_info=True
         )
 
