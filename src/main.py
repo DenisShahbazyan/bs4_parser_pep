@@ -16,8 +16,6 @@ from utils import find_tag, get_response
 def whats_new(session):
     whats_new_url = urljoin(MAIN_DOC_URL, 'whatsnew/')
     response = get_response(session, whats_new_url)
-    if response is None:
-        return
     soup = BeautifulSoup(response.text, features='lxml')
 
     div = find_tag(soup, 'section', attrs={'id': 'what-s-new-in-python'})
@@ -45,8 +43,6 @@ def whats_new(session):
 
 def latest_versions(session):
     response = get_response(session, MAIN_DOC_URL)
-    if response is None:
-        return
     soup = BeautifulSoup(response.text, 'lxml')
     sidebar = soup.find('div', {'class': 'sphinxsidebarwrapper'})
     ul_tags = sidebar.find_all('ul')
@@ -76,8 +72,6 @@ def latest_versions(session):
 def download(session):
     downloads_url = urljoin(MAIN_DOC_URL, 'download.html')
     response = get_response(session, downloads_url)
-    if response is None:
-        return
     soup = BeautifulSoup(response.text, features='lxml')
 
     main_tag = soup.find('div', {'role': 'main'})
@@ -102,8 +96,6 @@ def download(session):
 
 def sub_pep(session, link):
     response = get_response(session, link)
-    if response is None:
-        return
     soup = BeautifulSoup(response.text, features='lxml')
 
     dl = find_tag(soup, 'dl')
@@ -112,8 +104,6 @@ def sub_pep(session, link):
 
 def pep(session):
     response = get_response(session, PEP_URL)
-    if response is None:
-        return
     soup = BeautifulSoup(response.text, features='lxml')
 
     section = find_tag(soup, 'section', attrs={'id': 'numerical-index'})
