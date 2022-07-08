@@ -111,6 +111,7 @@ def pep(session):
     tbody = find_tag(table, 'tbody')
     tr = tbody.find_all('tr')
 
+    logs = []
     result = [('Статус', 'Количество')]
     count_pep = defaultdict(int)
     for item in tqdm(tr):
@@ -121,7 +122,7 @@ def pep(session):
         status_page = sub_pep(session, link)
 
         if status_page not in EXPECTED_STATUS[status_table]:
-            logging.info(
+            logs.append(
                 '\nНесовпадающие статусы:\n'
                 f'{link}\n'
                 f'Статус в карточке: {status_page}\n'
@@ -132,6 +133,9 @@ def pep(session):
 
     result.extend([(status, count_pep[status]) for status in count_pep])
     result.append(('Total', sum(count_pep.values())))
+
+    for log in logs:
+        logging.info(log)
 
     return result
 
