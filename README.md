@@ -36,10 +36,10 @@ optional arguments:
 
 ### Технологии:
 
-- Python 3.10.4
-- BeautifulSoup 4.11.1
-- lxml 4.9.1
-- PrettyTable 3.3.0
-- requests-cache 0.9.5
-- tqdm 4.64.0
+- [Python](https://www.python.org/) 3.10.4
+- [BeautifulSoup](https://pypi.org/project/beautifulsoup4/) 4.11.1
+- [lxml](https://pypi.org/project/lxml/) 4.9.1
+- [PrettyTable](https://pypi.org/project/prettytable/) 3.3.0
+- [requests-cache](https://pypi.org/project/requests-cache/) 0.9.5
+- [tqdm](https://pypi.org/project/tqdm/) 4.64.0
 
