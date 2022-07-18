@@ -31,7 +31,6 @@ optional arguments:
 3. ```-c``` - очистка кеша перед следующими запросами парсера.
 
 ## Развертывание:
-### Запуск веб-сервера::
 - Склонируйте проект на Ваш компьютер 
 ```sh 
 git clone https://github.com/DenisShahbazyan/bs4_parser_pep.git
