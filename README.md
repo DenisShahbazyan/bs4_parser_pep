@@ -3,6 +3,29 @@
 ## Описание:
 Парсер документации PEP. Парсит статьи по нововведениям в Python, статусы последних версий со ссылками на документацию, формирование таблицы с количеством PEP в каждом статусе, а так же скачивает документации по последней версии Python.
 
+## Развертывание:
+- Склонируйте проект на Ваш компьютер 
+```sh 
+git clone https://github.com/DenisShahbazyan/bs4_parser_pep.git
+``` 
+- Перейдите в папку с проектом 
+```sh 
+cd bs4_parser_pep
+``` 
+- Создайте и активируйте виртуальное окружение 
+```sh 
+python -m venv venv 
+source venv/Scripts/activate 
+``` 
+- Обновите менеджер пакетов (pip) 
+```sh 
+pip install --upgrade pip 
+``` 
+- Установите необходимые зависимости 
+```sh 
+pip install -r requirements.txt
+``` 
+
 ### Режимы работы парсера:
 1. ```python main.py whats-new``` - Парсер статей по нововведениям в Python.
 2. ```python main.py latest-versions``` - Статусы последних версий со ссылками на документацию.
@@ -29,30 +52,6 @@ optional arguments:
 1. ```--output pretty``` - вывод в табличном представлении в консоль.
 2. ```--output file``` - вывод таблицы с результатами в файл csv.
 3. ```-c``` - очистка кеша перед следующими запросами парсера.
-
-## Развертывание:
-- Склонируйте проект на Ваш компьютер 
-```sh 
-git clone https://github.com/DenisShahbazyan/bs4_parser_pep.git
-``` 
-- Перейдите в папку с проектом 
-```sh 
-cd bs4_parser_pep
-``` 
-- Создайте и активируйте виртуальное окружение 
-```sh 
-python -m venv venv 
-source venv/Scripts/activate 
-``` 
-- Обновите менеджер пакетов (pip) 
-```sh 
-pip install --upgrade pip 
-``` 
-- Установите необходимые зависимости 
-```sh 
-pip install -r requirements.txt
-``` 
-
 
 ## Системные требования:
 - [Python](https://www.python.org/) 3.10.4
